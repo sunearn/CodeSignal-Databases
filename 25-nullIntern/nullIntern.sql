@@ -7,3 +7,12 @@ OR lower(trim(description)) = 'null'
 OR lower(trim(description)) = '-'
 OR lower(trim(description)) = 'nil';
 END
+#####################################
+SELECT 
+      count (*) AS number_of_nulls
+      FROM departments
+      WHERE description IS NULL
+      OR TRIM(description) IN ('NULL', 'nil', '-');
+        
+  
+  
