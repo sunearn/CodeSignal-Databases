@@ -3,10 +3,11 @@ CREATE PROCEDURE expressionsVerification()
 BEGIN
     SELECT *
     FROM expressions
-    WHERE (operation = '+' AND a+b = c)
-        OR (operation = '-' AND a-b = c)
-        OR (operation = '*' AND a*b = c)
-        OR (operation = '/' AND a/b = c)
+    WHERE CASE WHEN operation = '+' THEN a+b
+	       WHEN operation = '-' THEN a-b 
+	       WHEN operation = '*' THEN a*b
+	       WHEN operation = '/' THEN a/b 
+	  END = c
     ORDER BY id;
 	
 END
